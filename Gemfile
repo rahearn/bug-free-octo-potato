@@ -64,6 +64,7 @@ group :development, :test do
   gem "bundler-audit", "~> 0.9"
   gem "standard", "~> 1.7"
   gem "i18n-tasks", "~> 1.0"
+  gem "shoulda-matchers", "~> 5.1"
 end
 
 group :development do

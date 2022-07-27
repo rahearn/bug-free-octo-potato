@@ -274,6 +274,8 @@ GEM
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     secure_headers (6.3.4)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     smart_properties (1.17.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -326,6 +328,7 @@ DEPENDENCIES
   rails_template_18f
   rspec-rails (~> 5.1)
   secure_headers (~> 6.3)
+  shoulda-matchers (~> 5.1)
   sprockets-rails
   standard (~> 1.7)
   tzinfo-data
