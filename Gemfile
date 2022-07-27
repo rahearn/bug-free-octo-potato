@@ -63,10 +63,12 @@ group :development, :test do
   gem "brakeman", "~> 5.2"
   gem "bundler-audit", "~> 0.9"
   gem "standard", "~> 1.7"
-end
-gem "rails_template_18f", group: :development
-gem "rails-erd", "~> 1.7", group: :development
-
-group :development, :test do
   gem "i18n-tasks", "~> 1.0"
 end
+
+group :development do
+  gem "rails_template_18f"
+  gem "rails-erd", "~> 1.7"
+end
+
+gem "omniauth-github", "~> 2.0"
