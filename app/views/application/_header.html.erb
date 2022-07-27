@@ -14,11 +14,20 @@
         <%= image_tag "@uswds/uswds/dist/img/usa-icons/close.svg", role: "img", alt: t('shared.header.close') %>
       </button>
       <ul class="usa-nav__primary usa-accordion">
-        <% I18n.available_locales.each do |l| %>
-          <li class="usa-nav__primary-item">
-            <%= format_active_locale(l) %>
-          </li>
+        <% if I18n.available_locales.count > 1 %>
+          <% I18n.available_locales.each do |l| %>
+            <li class="usa-nav__primary-item">
+              <%= format_active_locale(l) %>
+            </li>
+          <% end %>
         <% end %>
+        <li class="usa-nav__primary-item">
+          <% if user_signed_in? %>
+            <%= link_to "Logout", logout_path %>
+          <% else %>
+            <%= button_to "Login", "/auth/github" %>
+          <% end %>
+        </li>
       </ul>
     </nav>
   </div>

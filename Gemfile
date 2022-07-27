@@ -72,4 +72,6 @@ group :development do
   gem "rails-erd", "~> 1.7"
 end
 
+gem "omniauth", "~> 2.1"
 gem "omniauth-github", "~> 2.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
