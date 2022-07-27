@@ -6,12 +6,4 @@ terraform {
       version = "0.15.3"
     }
   }
-
-  backend "s3" {
-    bucket  = "TKTK-s3-bucket"
-    key     = "terraform.tfstate.stage"
-    encrypt = "true"
-    region  = "us-gov-west-1"
-    profile = "github_api-terraform-backend"
-  }
 }
