@@ -8,9 +8,9 @@ Rails.application.configure do
   config.content_security_policy do |policy|
     policy.default_src :self
     policy.font_src :self
-    policy.form_action :self
+    policy.form_action :self, "https://github.com/login/oauth/authorize"
     policy.frame_ancestors :none
-    policy.img_src :self, :data
+    policy.img_src :self, :data, "https://avatars.githubusercontent.com"
     policy.object_src :none
     policy.script_src :self
     policy.connect_src :self
