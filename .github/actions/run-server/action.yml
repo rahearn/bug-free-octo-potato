@@ -16,7 +16,7 @@ runs:
       env:
         RAILS_ENV: ${{ inputs.rails_env }}
         DATABASE_URL: ${{ inputs.database_url }}
-        SECRET_KEY_BASE: not-actually-secret
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: bundle exec rails server &
 
     - name: "Wait for startup"
