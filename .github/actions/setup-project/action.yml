@@ -31,6 +31,7 @@ runs:
     - name: Set up database
       env:
         RAILS_ENV: ${{ inputs.rails_env }}
+        RAILS_MASTER_KEY: ${{ inputs.rails_master_key }}
         DATABASE_URL: ${{ inputs.database_url }}
       shell: bash
       run: bundle exec rake db:schema:load
