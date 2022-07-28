@@ -169,6 +169,18 @@ Otherwise, they are set as a `((variable))` within `manifest.yml` and the variab
 
 Configuration that changes from staging to production, but is public, should be added to `config/deployment/staging.yml` and `config/deployment/production.yml`
 
+### Public Egress Proxy
+
+Traffic to be delivered to the public internet or s3 must be proxied through the [cg-egress-proxy](https://github.com/GSA/cg-egress-proxy) app.
+
+To deploy the proxy:
+
+1. Ensure terraform state is up to date.
+1. Update the acl files in `config/deployment/egress_proxy`
+1. Ensure Docker Desktop is running
+1. Deploy the proxy to staging: `bin/ops/deploy_egress_proxy.rb -s sandbox -a github_api-staging`
+1. Deploy the proxy to production: `bin/ops/deploy_egress_proxy.rb -s sandbox -a github_api-production`
+
 ## Documentation
 
 ### Compliance Documentation

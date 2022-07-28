@@ -28,14 +28,20 @@ Boundary(aws, "AWS GovCloud") {
         System_Ext(cloudgov_router, "<&layers> cloud.gov routers", "Cloud Foundry traffic service")
         Boundary(atob, "ATO boundary") {
             System_Boundary(inventory, "Application") {
-                Container(app, "<&layers> Github Api", "Ruby 3.1.2, Rails 7.0.3.1", "TKTK Application Description")
-                ContainerDb(app_db, "Application DB", "AWS RDS (PostgreSQL)", "Primary data storage")
+                Boundary(restricted_space, "Restricted egress space") {
+                    Container(app, "<&layers> Github Api", "Ruby 3.1.2, Rails 7.0.3.1", "TKTK Application Description")
+                    ContainerDb(app_db, "Application DB", "AWS RDS (PostgreSQL)", "Primary data storage")
+                }
+                Boundary(egress_space, "Public egress space") {
+                    Container(proxy, "<&layers> Egress Proxy", "Caddy, cg-egress-proxy", "Proxy with allow-list of external connections")
+                }
             }
         }
     }
 }
 
 Boundary(gsa_saas, "GSA-authorized SaaS") {
+    System_Ext(github_auth, "GitHub Authentication Service", "SSO")
 }
 
 Boundary(cicd, "CI/CD Pipeline") {
@@ -48,6 +54,9 @@ Rel(cloudgov_router, app, "proxies requests", "https GET/POST (443)")
 Rel(app, app_db, "reads/writes primary data", "psql (5432)")
 Rel(developer, githuball, "Publish code", "git ssh (22)")
 Rel(githuball, cg_api, "Deploy App", "Auth: SpaceDeployer Service Account, https (443)")
+Rel(app, proxy, "Proxy outbound connections", "https (443)")
+Rel(proxy, github_auth, "Retrieve access token", "https POST (443)")
+Rel(browser, github_auth, "Enter username & password", "https GET/POST (443)")
 @enduml
 ```
 

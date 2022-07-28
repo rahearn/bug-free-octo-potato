@@ -58,6 +58,15 @@ ______________________________________________________________________
 
 ## Implementation c.
 
+### github_api
+
+github_api is deployed to a restricted-egress cloud.gov space as described in [cloud.gov - controlling egress traffic](https://cloud.gov/docs/management/space-egress/).
+The restricted-egress space allows only communication to cloud.gov managed services including RDS.
+
+github_api includes an egress proxy in a public-egress cloud.gov space. This proxy includes an allow-list of allowed external connections. All other
+connections are blocked.
+
+
 Add control implementation description here for item sc-7_smt.c
 
 ______________________________________________________________________

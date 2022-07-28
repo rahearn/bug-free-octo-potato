@@ -53,3 +53,5 @@ jobs:
           push_arguments: >-
             --vars-file config/deployment/production.yml
             --var rails_master_key=$RAILS_MASTER_KEY
+      - name: Deploy egress proxy
+        run: ./bin/ops/deploy_egress_proxy.rb -s sandbox -a github_api-production
