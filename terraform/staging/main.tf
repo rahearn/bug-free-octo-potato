@@ -26,6 +26,7 @@ module "egress-space" {
   cf_space_name = local.cf_space_name
   # deployers should include any user or service account ID that will deploy the egress proxy
   deployers = [
+    var.cf_user,
     "92dd4c66-d68d-4829-8583-30de38d5b200"
   ]
 }
