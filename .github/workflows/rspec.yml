@@ -27,6 +27,7 @@ jobs:
         uses: ./.github/actions/setup-project
         with:
           rails_env: test
+          rails_master_key: ${{ secrets.RAILS_MASTER_KEY }}
 
       - name: Run rspec
         env:

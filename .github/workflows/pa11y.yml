@@ -25,10 +25,13 @@ jobs:
 
       - id: setup
         uses: ./.github/actions/setup-project
+        with:
+          rails_master_key: ${{ secrets.RAILS_MASTER_KEY }}
 
       - uses: ./.github/actions/run-server
         with:
           database_url: ${{ steps.setup.outputs.database_url }}
+          rails_master_key: ${{ secrets.RAILS_MASTER_KEY }}
 
       - name: Run pa11y-ci
         shell: bash
